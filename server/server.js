@@ -15,11 +15,20 @@ app.use(express.json());
 // INITIALIZE THE DATA: Call the loader so the chatbot has information to search
 loadKnowledgeBase();
 
+const path = require('path');
+
+// ... existing code ...
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 // Routes
 app.use('/api/chat', chatRoutes);
 
-app.get('/', (req, res) => {
-    res.send('Kenmark ITan Chatbot API is running');
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(PORT, () => {

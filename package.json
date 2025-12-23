@@ -1,0 +1,12 @@
+{
+    "name": "kenmark-ai-chatbot-root",
+    "version": "1.0.0",
+    "scripts": {
+        "install-all": "npm install --prefix client && npm install --prefix server",
+        "build": "npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+        "start": "node server/server.js"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
